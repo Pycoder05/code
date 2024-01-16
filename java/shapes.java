@@ -8,10 +8,10 @@ class Circle extends Shape{
         this.r=r;
     }
     void CalcArea(){
-        System.out.println("Area of Circle is "+Math.PI*r*r);
+        System.out.printf("Area of Circle is %.3f\n",Math.PI*r*r);
     }
     void CalcPeri(){
-        System.out.println("Perimeter of Cicrle is "+2*Math.PI*r);
+        System.out.printf("Perimeter of Cicrle is %.3f\n",2*Math.PI*r);
     }
 }
 class Triangle extends Shape{
@@ -23,10 +23,10 @@ class Triangle extends Shape{
     }
     void CalcArea(){
         double s=(a+b+c)/2;
-        System.out.println("Area of Triangle is "+Math.sqrt(s*(s-a)*(s-b)*(s-c)));
+        System.out.printf("Area of Triangle is %.3f\n",Math.sqrt(s*(s-a)*(s-b)*(s-c)));
     }
     void CalcPeri(){
-        System.out.println("Perimeter of Triangle is "+(a+b+c));
+        System.out.printf("Perimeter of Triangle is %.3f",(a+b+c));
     }
 }
 public class shapes{
