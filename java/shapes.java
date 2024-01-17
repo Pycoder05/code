@@ -11,7 +11,7 @@ class Circle extends Shape{
         System.out.printf("Area of Circle is %.3f\n",Math.PI*r*r);
     }
     void CalcPeri(){
-        System.out.printf("Perimeter of Cicrle is %.3f\n",2*Math.PI*r);
+        System.out.printf("Perimeter of Cicrle is %.3f\nb ",2*Math.PI*r);
     }
 }
 class Triangle extends Shape{
@@ -38,4 +38,4 @@ public class shapes{
         obj.CalcArea();
         obj.CalcPeri();
     }
-}
+} 
