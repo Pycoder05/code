@@ -27,7 +27,7 @@ main(){
                     break;
         }
     } 
-} 
+}
 int wait (int s) { return (--s);}
 int signal (int s) {return (++s);}
 void producer(){
