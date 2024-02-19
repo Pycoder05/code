@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define NUM_THREADS 12
+#define NUM_THREADS 128
 
 char *randstring(size_t len) {
   static char charset[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
