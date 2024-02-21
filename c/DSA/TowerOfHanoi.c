@@ -1,9 +1,7 @@
 #include <stdio.h>
 
-void tower(int n, char source, char temp, char dest)
-{
-    if (n == 1)
-    {
+void tower(int n, char source, char temp, char dest){
+    if (n == 1){
         printf("Move disk 1 from %c to %c\n", source, dest);
         return;
     }
@@ -13,21 +11,16 @@ void tower(int n, char source, char temp, char dest)
     tower(n - 1, temp, source, dest);
 }
 
-int main()
-{
+int main(){
     int n;
-
     printf("Enter the number of disks: ");
     scanf("%d", &n);
 
-    if (n < 1)
-    {
+    if (n < 1){
         printf("Number of disks should be at least 1.\n");
         return 1;
     }
-
     printf("Tower of Hanoi solution for %d disks:\n", n);
     tower(n, 'A', 'B', 'C');
-
     return 0;
 }

@@ -3,33 +3,26 @@
 #define m 5
 int a[m];
 
-void display()
-{
+void display(){
     int i;
     printf("Hash Table contents\n");
     printf("Key\tValue\n");
     for (i = 0; i < m; i++)
-    {
         printf("%d\t%d\n", i, a[i]);
-    }
     printf("\n");
 }
 
-void linear_probing(int key, int index)
-{
+void linear_probing(int key, int index){
     int i;
-    if (a[index] == 1)
-    {
+    if (a[index] == 1){
         a[index] = key;
         return;
     }
     printf("Collision\n");
     i = index;
-    do
-    {
+    do{
         i = (i + 1) % m;
-        if (a[i] == -1)
-        {
+        if (a[i] == -1){
             printf("It is Resolved by Linear Probing\n");
             a[i] = key;
             return;
@@ -38,13 +31,11 @@ void linear_probing(int key, int index)
     printf("Hash Table is Full\n");
 }
 
-int main()
-{
+int main(){
     int i, key, index, input;
     for (i = 0; i < m; i++)
         a[i] = -1;
-    do
-    {
+    do{
         printf("Enter the key\n");
         scanf("%d", &key);
         index = key % m;

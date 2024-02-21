@@ -2,17 +2,14 @@
 #include <stdlib.h>
 
 int *stack, max, top = -1;
-
-void push(int ele)
-{
+void push(int ele){
     if (top == max - 1)
         printf("Stack overflow");
     else
         stack[++top] = ele;
 }
 
-int pop()
-{
+int pop(){
     if (top == -1)
     {
         printf("Stack underflow");
@@ -22,39 +19,31 @@ int pop()
         return (stack[top--]);
 }
 
-void display()
-{
+void display(){
     int i;
     if (top == -1)
         printf("Stack is empty");
-    else
-    {
+    else{
         printf("Stack elements are ");
         for (i = top; i >= 0; i--)
-        {
             printf("%d\t", stack[i]);
-        }
     }
 }
 
-void palindrome()
-{
+void palindrome(){
     int num, rev, rem, ncopy;
     printf("Enter the value of the num: ");
     scanf("%d", &num);
     ncopy = num;
     top = -1;
-    while (num != 0)
-    {
+    while (num != 0){
         rem = num % 10;
         push(rem);
         num = num / 10;
     }
-    while (ncopy != 0)
-    {
+    while (ncopy != 0){
         rem = ncopy % 10;
-        if (rem != pop())
-        {
+        if (rem != pop()){
             printf("Given number is not a palindrome");
             top = -1;
             return;
@@ -64,19 +53,16 @@ void palindrome()
     printf("It is a palindrome");
 }
 
-int main()
-{
+int main(){
     int choice, ele;
     printf("Enter the size of stack: ");
     scanf("%d", &max);
     stack = (int *)malloc(max * sizeof(int));
-    while (1)
-    {
+    while (1){
         printf("\nEnter your choice\n");
         printf("1: Push\n2: Pop\n3: Display\n4: Palindrome\n5: Exit \n");
         scanf("%d", &choice);
-        switch (choice)
-        {
+        switch (choice){
         case 1:
             printf("Enter the element to be pushed: ");
             scanf("%d", &ele);
