@@ -71,7 +71,7 @@ void deleteEnd(){
         if (prev != NULL)
             prev->next = NULL;
         else
-            start = NULL; // If the list had only one node
+            start = NULL;
 
         free(temp);
     }
