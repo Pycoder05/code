@@ -4,10 +4,9 @@
 int a[m];
 
 void display(){
-    int i;
     printf("Hash Table contents\n");
     printf("Key\tValue\n");
-    for (i = 0; i < m; i++)
+    for (int i = 0; i < m; i++)
         printf("%d\t%d\n", i, a[i]);
     printf("\n");
 }
@@ -29,6 +28,7 @@ void linear_probing(int key, int index){
         }
     } while (i != index);
     printf("Hash Table is Full\n");
+    return;
 }
 
 int main(){
