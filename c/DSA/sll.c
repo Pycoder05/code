@@ -17,7 +17,7 @@ node *getnode(){
     newNode->next = NULL;
     return newNode;
 }
-
+ 
 void insertBegin(){
     node *newNode = getnode();
     if (start == NULL)
