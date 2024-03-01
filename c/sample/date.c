@@ -2,24 +2,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #define NUM_THREADS 128
+#define STRING_LENGTH 10
 
 char *randstring(size_t len) {
   static char charset[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  char *random = NULL;
+  char *random = malloc(sizeof(char) * (len + 1));
 
-  if (len) {
-    random = malloc(sizeof(char) * (len + 1));
-
-    if (random) {
-      for (size_t n = 0; n < len; n++) {
-        int key = rand() % (int)(sizeof(charset) - 1);
-        random[n] = charset[key];
-      }
-
-      random[len] = '\0';
+  if (random) {
+    for (size_t n = 0; n < len; n++) {
+      int key = rand() % (int)(sizeof(charset) - 1);
+      random[n] = charset[key];
     }
+
+    random[len] = '\0';
   }
 
   return random;
@@ -28,29 +26,15 @@ char *randstring(size_t len) {
 void *thread_function(void *thread_arg) {
   int *thread_id = (int *)thread_arg;
   int c = 1;
+  char HEE[STRING_LENGTH + 1];
+  char HE[STRING_LENGTH + 1];
+
+  strcpy(HE, "HELLOWORLD");
 
   while (1) {
-    char HEE[11];
+    strcpy(HEE, randstring(STRING_LENGTH));
 
-    for (int i = 0; i < 10; i++) {
-      HEE[i] = '\0';
-    }
-
-    char HE[11];
-    strcpy(HEE, randstring(10));
-    HE[0] = 'H';
-    HE[1] = 'E';
-    HE[2] = 'L';
-    HE[3] = 'L';
-    HE[4] = 'O';
-    HE[5] = 'W';
-    HE[6] = 'O';
-    HE[7] = 'R';
-    HE[8] = 'L';
-    HE[9] = 'D';
-    HE[10] = '\0';
-
-    if (strcmp(HE, HEE) == 0) {
+    if (strncmp(HE, HEE, STRING_LENGTH) == 0) {
       printf("Thread %d: Success at %dth attempt\n", *thread_id, c);
       printf("%s\n", HE);
       printf("%s\n", HEE);
