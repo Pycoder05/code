@@ -56,6 +56,7 @@ void search(node *root, int key){
     else
         search(root->right, key);
 }
+
 node* delete(node* root,int key){
     if(root==NULL){
         printf("Key not found\n");
