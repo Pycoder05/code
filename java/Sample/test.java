@@ -1,29 +1,42 @@
 import java.util.Scanner;
 
-class OOCException extends Exception{
-    OOCException(String message){
-        super(message);
+interface Flyable {
+    void fly();
+}
+
+interface Swimmable {
+    void swim();
+}
+
+class FlyingFish implements Flyable, Swimmable {
+    private String name;
+
+    public FlyingFish(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void fly() {
+        System.out.println(name + " can glide through the air");
+    }
+
+    @Override
+    public void swim() {
+        System.out.println(name + " can swim in water");
     }
 }
-public class test{
-    static void divide(double a,double b)throws OOCException{
-        if(b==0){
-            throw new OOCException("Division by zero");
-        }
-        double c=a/b;
-        System.out.println("Result is "+c);
-    }
+
+public class Test {
     public static void main(String[] args) {
-        Scanner sc=new Scanner(System.in);
-        System.out.println("Enter two numbers");
-        double a=sc.nextDouble();
-        double b=sc.nextDouble();
-        try{
-            divide(a,b);
-        }catch(OOCException e){
-            System.out.println(e);
-        }finally{
-            System.out.println("end");
-        }
+        Scanner scanner = new Scanner(System.in);
+
+        String fishName = scanner.nextLine();
+
+        FlyingFish flyingFish = new FlyingFish(fishName);
+
+        flyingFish.fly();
+        flyingFish.swim();
+
+        scanner.close();
     }
 }
