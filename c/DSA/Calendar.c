@@ -7,7 +7,6 @@ struct Calendar {
   char* description;
   int day;
 };
-
 typedef struct Calendar Cal;
 
 Cal* create() {
