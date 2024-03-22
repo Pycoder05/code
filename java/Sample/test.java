@@ -1,42 +1,47 @@
+/*
+ * Complete the code below with a catch statement to print the following if the
+ * denominator (b) is zero
+ * 
+ * § Cannot Divide by ZERO
+ */
 import java.util.Scanner;
 
-interface Flyable {
-    void fly();
-}
+public class W09_P5 {
 
-interface Swimmable {
-    void swim();
-}
-
-class FlyingFish implements Flyable, Swimmable {
-    private String name;
-
-    public FlyingFish(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public void fly() {
-        System.out.println(name + " can glide through the air");
-    }
-
-    @Override
-    public void swim() {
-        System.out.println(name + " can swim in water");
-    }
-}
-
-public class Test {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        int a, b;
+        Scanner input = new Scanner(System.in);
+        // Read any two values for a and b.
+        // Get the result of a/b;
+        int result;
 
-        String fishName = scanner.nextLine();
+        a = input.nextInt();
+        b = input.nextInt();
+        input.close();
+        // try block to divide two numbers and display the result
+        try {
+            result = a / b;
+            System.out.println(result);
+        }
+        // catch block to catch the Error
 
-        FlyingFish flyingFish = new FlyingFish(fishName);
 
-        flyingFish.fly();
-        flyingFish.swim();
 
-        scanner.close();
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        catch (Exception e) {
+            System.out.println("Exception Occoured");
+}
+}
 }
