@@ -7,18 +7,15 @@ void push(int ele){
         printf("Stack overflow");
     else
         stack[++top] = ele;
-}
-
+} 
 int pop(){
-    if (top == -1)
-    {
+    if (top == -1){
         printf("Stack underflow");
         return -1;
     }
     else
         return (stack[top--]);
 }
-
 void display(){
     int i;
     if (top == -1)
