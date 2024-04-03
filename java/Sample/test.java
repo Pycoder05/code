@@ -1,29 +1,45 @@
 /*
- * Complete the code below with a catch statement to print the following if the
- * denominator (b) is zero
+ * Complete the code segment to create a new table named ‘STUDENTS’ in SQL
+ * database using the following information.
  * 
- * § Cannot Divide by ZERO
+ * Column
+ * 
+ * UID
+ * 
+ * Name
+ * 
+ * Roll
+ * 
+ * Age
+ * 
+ * Type
+ * 
+ * Integer
+ * 
+ * Varchar (45)
+ * 
+ * Varchar (12)
+ * 
+ * Integer
+ * 
+ * 
  */
-import java.util.Scanner;
-
-public class W09_P5 {
-
-    public static void main(String[] args) {
-        int a, b;
-        Scanner input = new Scanner(System.in);
-        // Read any two values for a and b.
-        // Get the result of a/b;
-        int result;
-
-        a = input.nextInt();
-        b = input.nextInt();
-        input.close();
-        // try block to divide two numbers and display the result
+import java.sql.*;
+import java.lang.*;
+public class W11_P4 {
+    public static void main(String args[]) {
         try {
-            result = a / b;
-            System.out.println(result);
-        }
-        // catch block to catch the Error
+              Connection conn = null;
+              Statement stmt = null;
+              String DB_URL = "jdbc:sqlite:/tempfs/db";
+              System.setProperty("org.sqlite.tmpdir", "/tempfs");
+            
+              // Open a connection
+              conn = DriverManager.getConnection(DB_URL);
+              stmt = conn.createStatement();
+              // The statement containing SQL command to create table "STUDENTS"
+
+// Execute the statement containing SQL command below this comment
 
 
 
@@ -33,15 +49,8 @@ public class W09_P5 {
 
 
 
-
-
-
-
-
-
-
-        catch (Exception e) {
-            System.out.println("Exception Occoured");
+~~~THERE IS SOME INVISIBLE CODE HERE~~~
 }
+catch(Exception e){ System.out.println(e);}  
 }
 }
