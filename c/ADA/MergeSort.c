@@ -1,36 +1,63 @@
 #include<stdio.h>
 #include<stdlib.h>
-int n,p,q,a[200],b[200],c[200];
+#include<math.h>
 
-void Mergesort(int a[]){
-    printf("Enter the no of elements:");
-    scanf("%d",&n);
-    p=floor(n/2);
-    q=ceil(n/2);
-    if(n>1){
-        for(int i=0;i<p-1;i++)
-            b[i]=a[i];
-        for(int i=q;i<n-1;i++)
-            c[i]=b[i];
-        Mergesort(b);
-        Mergesort(c);
-        merge(b,c,a);
+void merge(int b[], int p, int c[], int q, int a[]) {
+    int i = 0, j = 0, k = 0;
+    while (i < p && j < q) {
+        if (b[i] <= c[j]) {
+            a[k] = b[i];
+            i++;
+        } else {
+            a[k] = c[j];
+            j++;
+        }
+        k++;
+    }
+    while (i < p) {
+        a[k] = b[i];
+        i++;
+        k++;
+    }
+    while (j < q) {
+        a[k] = c[j];
+        j++;
+        k++;
     }
 }
 
-void merge(int b[],int c[],int a[]){
-    int i=0,j=0,k=0;
-    while(i>p && j>q){
-        if(b[i]>c[i]){
-            a[i]=b[i];
-            i++;
-        }else{
-            a[k]=c[k];
-            j++;
-        }
+void Mergesort(int a[], int n) {
+    if (n < 2) {
+        return;
     }
-    if(i==p){
-        
+    int p = n / 2;
+    int q = n - p;
+    int b[p], c[q];
+    for (int i = 0; i < p; i++) {
+        b[i] = a[i];
     }
+    for (int i = 0; i < q; i++) {
+        c[i] = a[i + p];
+    }
+    Mergesort(b, p);
+    Mergesort(c, q);
+    merge(b, p, c, q, a);
+}
 
+int main() {
+    int n;
+    printf("Enter the size of the array: ");
+    scanf("%d", &n);
+    int a[n];
+    for (int i = 0; i < n; i++) 
+        a[i] = rand();
+    printf("Unsorted array: ");
+    for (int i = 0; i < n; i++) 
+        printf("%d ", a[i]);
+    Mergesort(a, n);
+    printf("\n Sorted array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", a[i]);
+    }
+    return 0;
 }
