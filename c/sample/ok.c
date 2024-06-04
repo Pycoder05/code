@@ -1,23 +1,40 @@
-#include<stdio.h>
-#include<stdlib.h>
-struct SLL
-{
-    int sem;
-    char usn[11],name[20],branch[20],phno[10];
-    struct SLL *next; 
-};
-typedef struct SLL node;
-node *start=NULL;
-node *createnode()
-{
-    node *newnode;
-    newnode=(node*)malloc(sizeof(node));
-    printf("\n Enter usn,name,branch,sem,phno:");
-    scanf("%s",newnode->usn);
-    scanf("%s",newnode->name);
-    scanf("%s",newnode->branch);
-    scanf("%d",&newnode->sem);
-    scanf("%s",newnode->phno);
+/*
+You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
+
+Merge all the linked-lists into one sorted linked-list and return it.
+
+
+
+Example 1:
+
+Input: lists = [[1,4,5],[1,3,4],[2,6]]
+Output: [1,1,2,3,4,4,5,6]
+Explanation: The linked-lists are:
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+merging them into one sorted list:
+1->1->2->3->4->4->5->6
+Example 2:
+
+Input: lists = []
+Output: []
+Example 3:
+
+Input: lists = [[]]
+Output: []*/
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode* mergeKLists(struct ListNode** lists, int listsSize) {
+    
+
+
     
 }
-
