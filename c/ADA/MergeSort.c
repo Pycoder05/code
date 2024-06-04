@@ -1,63 +1,52 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
-
-void merge(int b[], int p, int c[], int q, int a[]) {
-    int i = 0, j = 0, k = 0;
-    while (i < p && j < q) {
-        if (b[i] <= c[j]) {
-            a[k] = b[i];
-            i++;
-        } else {
-            a[k] = c[j];
-            j++;
+static int count=0;
+void MergeSort(int a[],float n){
+    int b[10000],c[10000],j=0,i,f,d;
+    f=floor(n/2);
+    d=ceil(n/2);
+    if(n>1){
+        count++;
+        for(i=0;i<f;i++)
+            b[i]=a[i];
+        for(i=f;i<n;i++)
+            c[j++]=a[i];
+        MergeSort(b,f);
+        MergeSort(c,d);
+        Merge(b,c,a,f,d);
+    }
+}
+void Merge(int b[],int c[],int a[], int f, int d){
+    int i=0,j=0,k=0;
+    while(i<f && j<d){
+        count++;
+        if(b[i]<=c[j]){
+            a[k++]=b[i];
+            i=i+1;
         }
-        k++;
+        else{
+            a[k++]=c[j];
+            j=j+1;
+        }
     }
-    while (i < p) {
-        a[k] = b[i];
-        i++;
-        k++;
-    }
-    while (j < q) {
-        a[k] = c[j];
-        j++;
-        k++;
-    }
+    while(i<f)
+        a[k++]=b[i++];
+    while(j<d)
+        a[k++]=c[j++];
 }
-
-void Mergesort(int a[], int n) {
-    if (n < 2) {
-        return;
+int main(){
+    int a[10000],m,i;
+    printf("\nEnter the size of the array : ");
+    scanf("%d",&m);
+    printf("\nThe array elements are : ");
+    for(i=0;i<m;i++){
+        a[i]=rand();
+        printf("%d\t",a[i]);
     }
-    int p = n / 2;
-    int q = n - p;
-    int b[p], c[q];
-    for (int i = 0; i < p; i++) {
-        b[i] = a[i];
-    }
-    for (int i = 0; i < q; i++) {
-        c[i] = a[i + p];
-    }
-    Mergesort(b, p);
-    Mergesort(c, q);
-    merge(b, p, c, q, a);
-}
-
-int main() {
-    int n;
-    printf("Enter the size of the array: ");
-    scanf("%d", &n);
-    int a[n];
-    for (int i = 0; i < n; i++) 
-        a[i] = rand();
-    printf("Unsorted array: ");
-    for (int i = 0; i < n; i++) 
-        printf("%d ", a[i]);
-    Mergesort(a, n);
-    printf("\n Sorted array: ");
-    for (int i = 0; i < n; i++) {
-        printf("%d ", a[i]);
-    }
-    return 0;
+    MergeSort(a,m);
+    printf("\nThe sorted elements are : ");
+    for(i=0;i<m;i++)
+        printf("%d\t",a[i]);
+    printf("\nNumber of times the basic operation executed : %d",count);
 }
