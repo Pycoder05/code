@@ -44,3 +44,12 @@ int main(){
     }
     sourceremoval();
 }
+//Enter the number of vertices: 5
+//Enter the cost matrix:
+//0 1 1 0 0
+//0 0 0 1 1
+//0 0 0 1 0
+//0 0 0 0 1
+//0 0 0 0 0
+//topological order =
+//0    1	2	3	4	Above solution is correct   
