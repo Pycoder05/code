@@ -9,10 +9,10 @@ void dpknapsack(int n,int m,int p[],int w[]){
         for(j=0;j<=m;j++){
             if(i==0 || j==0){
                 v[i][j]=0;
-            }else if(j<w[i-1]){
+            }else if(j<w[i]){
                 v[i][j]=v[i-1][j];
             }else{
-                v[i][j]=max(v[i-1][j],v[i-1][j-w[i-1]]+p[i-1]);
+                v[i][j]=max(v[i-1][j],v[i-1][j-w[i]]+p[i]);
             }
         printf("%d ",v[i][j]);
         }
@@ -30,10 +30,7 @@ void dpknapsack(int n,int m,int p[],int w[]){
 }
 
 int max(int a ,int b){
-    if(a>b)
-        return a;
-    else
-        return b;
+    return (a>b)?a:b;
 }
 
 int main(){
