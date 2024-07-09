@@ -1,18 +1,18 @@
 #include<stdio.h>
-#include<math.h>
 #include<stdlib.h>
+
 void greedy(int n,int m,float p[],float w[]){
     int i,k,count;
-    int profit = 0,max;
+    float profit = 0,max;
     for(count = 0;count < n;count++){
         max=0;
         for(i = 0;i < n;i++){
-            if(p[i]/w[i] > max){
-                max = w[i];
+            if((p[i]/w[i]) > max){
+                max = p[i]/w[i];
                 k = i;
             }
         }
-        if(w[k] <= max){
+        if(w[k] <= m){
             printf("object %d is selected with fraction\n",k+1);
             profit += p[k];
             m -= w[k];
@@ -21,8 +21,10 @@ void greedy(int n,int m,float p[],float w[]){
             break;
     }
     printf("Discrete knapsack problem %f\n",profit);
-    profit += (m/w[k]) * p[k];
-    printf("Continuos knapsack profit by including %d item with fraction %f=%f\n", k , m/w[k] , profit);
+    if(m > 0 && count < n){
+        profit += (m/w[k]) * p[k];
+        printf("Continuos knapsack profit by including %d item with fraction %.2f=%.2f\n", k+1 , m/w[k] , profit);
+    }
 }
 int main(){
     int n,m;
